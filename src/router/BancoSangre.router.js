@@ -124,9 +124,11 @@ router.delete("/BancoSangre/:ID_BancoSangre", async (req, res) => {
         res.status(204).json({
             ok: true,
             status: 204,
-            body: deleteBancoSangre
+            //body: deleteBancoSangre,
+            message: 'Banco de Sangre eliminado'
         })
     } catch (error) {
+        console.log(error)
         return res.status(500).json({
             message: 'Ocurrio un error'
         })

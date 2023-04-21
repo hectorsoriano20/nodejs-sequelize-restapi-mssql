@@ -1,11 +1,12 @@
+require('dotenv').config();
 const { Sequelize, Model, DataTypes } = require("sequelize");
 
-const dbDataBase = process.env.DB_DATABASE || "BancoSangre"
-const dbUser = process.env.DB_USER || "sa"
-const dbPass = process.env.DB_PASSWORD || "12345"
-const dbHost = process.env.DB_HOST || "localhost"
-const dbDialect= process.env.DB_DIALECT || "mssql"
-const dbPort = process.env.DB_PORT || 1433
+const dbDataBase = process.env.DB_DATABASE
+const dbUser = process.env.DB_USER
+const dbPass = process.env.DB_PASSWORD
+const dbHost = process.env.DB_HOST
+const dbDialect= process.env.DB_DIALECT
+const dbPort = process.env.DB_PORT
 
 const sequelize = new Sequelize(dbDataBase, dbUser, dbPass, {
     host: dbHost,
