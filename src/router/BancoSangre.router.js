@@ -28,6 +28,7 @@ router.get("/BancoSangre", async (req, res) => {
         body: bancossangre
     })
     } catch (error) {
+        console.log(error)
         return res.status(500).json({
             message: 'Ocurrio un error'
         })
@@ -53,6 +54,7 @@ router.get("/BancoSangre/:ID_BancoSangre", async (req, res) => {
             body: bancosangre
         })
     } catch (error) {
+        console.log(error)
         return res.status(500).json({
             message: 'Ocurrio un error'
         })
@@ -74,6 +76,7 @@ router.post("/BancoSangre", async (req, res) => {
         message: "Banco de Sangre Creado",
     });
     } catch (error) {
+        console.log(error)
         return res.status(500).json({
             message: 'Ocurrio un error'
         })
@@ -102,6 +105,7 @@ router.put("/BancoSangre/:ID_BancoSangre", async (req, res) => {
             body: updateBancoSangre
         })
     } catch (error) {
+        console.log(error)
         return res.status(500).json({
             message: 'Ocurrio un error'
         })
