@@ -59,7 +59,7 @@ router.get("/Registro/:ID_Registro", async (req, res) => {
     }
 });
 
-router.post("/Registro", async (req, res) => {
+router.post("/Registro/POST", async (req, res) => {
     const dataRegistros = req.body
     try {
         await Registro.sync({ alter: true})
@@ -80,7 +80,7 @@ router.post("/Registro", async (req, res) => {
     }
 });
 
-router.put("/Registro/:ID_Registro", async (req, res) => {
+router.put("/Registro/PUT/:ID_Registro", async (req, res) => {
     const id = req.params.ID_Registro;
     const dataRegistros = req.body;
     try {
@@ -108,7 +108,7 @@ router.put("/Registro/:ID_Registro", async (req, res) => {
     }
 });
 
-router.delete("/Registro/:ID_Registro", async (req, res) => {
+router.delete("/Registro/DEL/:ID_Registro", async (req, res) => {
     const id = req.params.ID_Registro
     try {
         const deleteRegistro = await Registro.destroy({

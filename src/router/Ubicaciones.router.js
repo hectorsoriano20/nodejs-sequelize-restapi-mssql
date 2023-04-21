@@ -59,7 +59,7 @@ router.get("/Ubicaciones/:ID_Ubicaciones", async (req, res) => {
     }
 });
 
-router.post("/Ubicaciones", async (req, res) => {
+router.post("/Ubicaciones/POST", async (req, res) => {
     const dataUbicaciones = req.body
     try {
         await Ubicaciones.sync({ alter: true})
@@ -79,7 +79,7 @@ router.post("/Ubicaciones", async (req, res) => {
     }
 });
 
-router.put("/Ubicaciones/:ID_Ubicaciones", async (req, res) => {
+router.put("/Ubicaciones/PUT/:ID_Ubicaciones", async (req, res) => {
     const id = req.params.ID_Ubicaciones;
     const dataUbicaciones = req.body;
     try {
@@ -106,7 +106,7 @@ router.put("/Ubicaciones/:ID_Ubicaciones", async (req, res) => {
     }
 });
 
-router.delete("/Ubicaciones/:ID_Ubicaciones", async (req, res) => {
+router.delete("/Ubicaciones/DEL/:ID_Ubicaciones", async (req, res) => {
     const id = req.params.ID_Ubicaciones
     try {
         const deleteUbicaciones = await Ubicaciones.destroy({

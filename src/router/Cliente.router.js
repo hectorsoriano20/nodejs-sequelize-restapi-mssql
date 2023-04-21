@@ -59,7 +59,7 @@ router.get("/Cliente/:ID_Cliente", async (req, res) => {
     }
 });
 
-router.post("/Cliente", async (req, res) => {
+router.post("/Cliente/POST", async (req, res) => {
     const dataClientes = req.body
     try {
         await Cliente.sync({ alter: true})
@@ -80,7 +80,7 @@ router.post("/Cliente", async (req, res) => {
     }
 });
 
-router.put("/Cliente/:ID_Cliente", async (req, res) => {
+router.put("/Cliente/PUT/:ID_Cliente", async (req, res) => {
     const id = req.params.ID_Cliente;
     const dataClientes = req.body;
     try {
@@ -109,7 +109,7 @@ router.put("/Cliente/:ID_Cliente", async (req, res) => {
     }
 });
 
-router.delete("/Cliente/:ID_Cliente", async (req, res) => {
+router.delete("/Cliente/DEL/:ID_Cliente", async (req, res) => {
     const id = req.params.ID_Cliente
     try {
         const deleteCliente = await Cliente.destroy({

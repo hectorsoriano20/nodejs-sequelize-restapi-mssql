@@ -59,7 +59,7 @@ router.get("/Localidad/:ID_Localidad", async (req, res) => {
     }
 });
 
-router.post("/Localidad", async (req, res) => {
+router.post("/Localidad/POST", async (req, res) => {
     const dataLocalidades = req.body
     try {
         await Localidad.sync({ alter: true})
@@ -79,7 +79,7 @@ router.post("/Localidad", async (req, res) => {
     }
 });
 
-router.put("/Localidad/:ID_Localidad", async (req, res) => {
+router.put("/Localidad/PUT/:ID_Localidad", async (req, res) => {
     const id = req.params.ID_Localidad;
     const dataLocalidades = req.body;
     try {
@@ -107,7 +107,7 @@ router.put("/Localidad/:ID_Localidad", async (req, res) => {
     }
 });
 
-router.delete("/Localidad/:ID_Localidad", async (req, res) => {
+router.delete("/Localidad/DEL/:ID_Localidad", async (req, res) => {
     const id = req.params.ID_Localidad
     try {
         const deleteLocalidad = await Localidad.destroy({

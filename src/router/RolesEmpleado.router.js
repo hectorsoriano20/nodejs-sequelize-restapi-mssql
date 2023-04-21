@@ -59,7 +59,7 @@ router.get("/RolesEmpleado/:ID_Roles", async (req, res) => {
     }
 });
 
-router.post("/RolesEmpleado", async (req, res) => {
+router.post("/RolesEmpleado/POST", async (req, res) => {
     const dataRolesEmpleados = req.body
     try {
         await RolesEmpleado.sync({ alter: true})
@@ -80,7 +80,7 @@ router.post("/RolesEmpleado", async (req, res) => {
     }
 });
 
-router.put("/RolesEmpleado/:ID_Roles", async (req, res) => {
+router.put("/RolesEmpleado/PUT/:ID_Roles", async (req, res) => {
     const id = req.params.ID_Roles;
     const dataRolesEmpleados = req.body;
     try {
@@ -109,7 +109,7 @@ router.put("/RolesEmpleado/:ID_Roles", async (req, res) => {
     }
 });
 
-router.delete("/RolesEmpleado/:ID_Roles", async (req, res) => {
+router.delete("/RolesEmpleado/DEL/:ID_Roles", async (req, res) => {
     const id = req.params.ID_Roles
     try {
         const deleteRolesEmpleado = await RolesEmpleado.destroy({

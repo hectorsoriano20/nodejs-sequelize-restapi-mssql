@@ -59,7 +59,7 @@ router.get("/Donante/:ID_Donante", async (req, res) => {
     }
 });
 
-router.post("/Donante", async (req, res) => {
+router.post("/Donante/POST", async (req, res) => {
     const dataDonantes = req.body
     try {
         await Donante.sync({ alter: true})
@@ -82,7 +82,7 @@ router.post("/Donante", async (req, res) => {
     }
 });
 
-router.put("/Donante/:ID_Donante", async (req, res) => {
+router.put("/Donante/PUT/:ID_Donante", async (req, res) => {
     const id = req.params.ID_Donante;
     const dataDonantes = req.body;
     try {
@@ -113,7 +113,7 @@ router.put("/Donante/:ID_Donante", async (req, res) => {
     }
 });
 
-router.delete("/Donante/:ID_Donante", async (req, res) => {
+router.delete("/Donante/DEL/:ID_Donante", async (req, res) => {
     const id = req.params.ID_BancoSangre
     try {
         const deleteDonante = await Donante.destroy({

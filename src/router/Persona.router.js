@@ -59,7 +59,7 @@ router.get("/Persona/:ID_Persona", async (req, res) => {
     }
 });
 
-router.post("/Persona", async (req, res) => {
+router.post("/Persona/POST", async (req, res) => {
     const dataPersonas = req.body
     try {
         await Persona.sync({ alter: true})
@@ -84,7 +84,7 @@ router.post("/Persona", async (req, res) => {
     }
 });
 
-router.put("/Persona/:ID_Persona", async (req, res) => {
+router.put("/Persona/PUT/:ID_Persona", async (req, res) => {
     const id = req.params.ID_Persona;
     const dataPersonas = req.body;
     try {
@@ -117,7 +117,7 @@ router.put("/Persona/:ID_Persona", async (req, res) => {
     }
 });
 
-router.delete("/Persona/:ID_Persona", async (req, res) => {
+router.delete("/Persona/DEL/:ID_Persona", async (req, res) => {
     const id = req.params.ID_Persona
     try {
         const deletePersona = await Persona.destroy({

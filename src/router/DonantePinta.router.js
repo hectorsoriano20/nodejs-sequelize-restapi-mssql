@@ -59,7 +59,7 @@ router.get("/DonantePinta/:ID_DonantePinta", async (req, res) => {
     }
 });
 
-router.post("/DonantePinta", async (req, res) => {
+router.post("/DonantePinta/POST", async (req, res) => {
     const dataDonantePintas = req.body
     try {
         await DonantePinta.sync({ alter: true})
@@ -106,7 +106,7 @@ router.post("/DonantePinta", async (req, res) => {
     }
 }); */
 
-router.delete("/DonantePinta/:ID_DonantePinta", async (req, res) => {
+router.delete("/DonantePinta/DEL/:ID_DonantePinta", async (req, res) => {
     const id = req.params.ID_DonantePinta
     try {
         const deleteDonantePinta = await DonantePinta.destroy({

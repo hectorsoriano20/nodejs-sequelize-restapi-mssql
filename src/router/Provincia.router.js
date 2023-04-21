@@ -59,7 +59,7 @@ router.get("/Provincia/:ID_Provincias", async (req, res) => {
     }
 });
 
-router.post("/Provincia", async (req, res) => {
+router.post("/Provincia/POST", async (req, res) => {
     const dataProvincias = req.body
     try {
         await Provincia.sync({ alter: true})
@@ -80,7 +80,7 @@ router.post("/Provincia", async (req, res) => {
     }
 });
 
-router.put("/Provincia/:ID_Provincias", async (req, res) => {
+router.put("/Provincia/PUT/:ID_Provincias", async (req, res) => {
     const id = req.params.ID_Provincias;
     const dataProvincias = req.body;
     try {
@@ -109,7 +109,7 @@ router.put("/Provincia/:ID_Provincias", async (req, res) => {
     }
 });
 
-router.delete("/Provincia/:ID_Provincias", async (req, res) => {
+router.delete("/Provincia/DEL/:ID_Provincias", async (req, res) => {
     const id = req.params.ID_Provincias
     try {
         const deleteProvincia = await Provincia.destroy({

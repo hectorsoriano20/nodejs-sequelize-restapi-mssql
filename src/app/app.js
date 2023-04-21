@@ -18,7 +18,7 @@ const app = express();
 app.use(morgan("dev"))
 
 app.get('/', (req, res) => {
-    res.send('This is Express');
+    res.send('GESTION ESCRLATA API');
 });
 app.use(express.json())
 app.use("/api/v1", routerBancoSangre)
