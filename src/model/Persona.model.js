@@ -49,6 +49,10 @@ Persona.init({
         type: DataTypes.INTEGER,
         allowNull: true
     },
+    Contrasena_Persona: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
 }, {
     sequelize,
     modelName: "Persona"
