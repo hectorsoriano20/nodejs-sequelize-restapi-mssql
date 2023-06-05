@@ -1,1 +1,0 @@
-# nodejs-sequelize-restapi-mssql
