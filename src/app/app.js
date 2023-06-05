@@ -1,5 +1,6 @@
 const express = require('express');
-const morgan = require("morgan")
+const morgan = require("morgan");
+const cors = require('cors');
 
 const routerBancoSangre = require("../router/BancoSangre.router")
 const routerCliente = require("../router/Cliente.router")
@@ -12,6 +13,7 @@ const routerProvincia = require("../router/Provincia.router")
 const routerRegistro = require("../router/Registro.router")
 const routerRolesEmpleado = require("../router/RolesEmpleado.router")
 const routerUbicaciones = require("../router/Ubicaciones.router")
+const routerCita = require("../router/Cita.router")
 
 const app = express();
 
@@ -32,6 +34,9 @@ app.use("/api/v1", routerProvincia)
 app.use("/api/v1", routerRegistro)
 app.use("/api/v1", routerRolesEmpleado)
 app.use("/api/v1", routerUbicaciones)
+app.use("/api/v1", routerCita)
+
+app.use(cors());
 
 app.use((req, res, next) => {
     res.status(404).json({

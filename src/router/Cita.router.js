@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { faker } = require("@faker-js/faker")
 
-const Cliente = require("../model/Cliente.model")
+const Cita = require("../model/Cita.model")
 
 function generarNumerosAleatoriosSinRepetir(cantidad = 1, minimo = 1, maximo = 100) {
     var numeros = [];
@@ -14,43 +14,44 @@ function generarNumerosAleatoriosSinRepetir(cantidad = 1, minimo = 1, maximo = 1
     return numeros;
   }
 
-router.get("/Cliente", async (req, res) => {
+router.get("/Cita", async (req, res) => {
     try {
-        const clientes = await Cliente.findAll()
+        const citas = await Cita.findAll()
     
-    if (clientes <= 0) return res.status(404).json({
-        message: 'No se encontro ningun Cliente'
+    if (citas <= 0) return res.status(404).json({
+        message: 'No se encontro ninguna Cita'
     })
     
     res.status(200).json({
         ok: true,
         status: 200,
-        body: clientes
+        body: citas
     })
     } catch (error) {
         return res.status(500).json({
             message: 'Ocurrio un error'
+            
         })
     }
 });
 
-router.get("/Cliente/:ID_Cliente", async (req, res) => {
-    const id = req.params.ID_Cliente;
+router.get("/Cita/:ID_Cita", async (req, res) => {
+    const id = req.params.ID_Cita;
     try {
-        const cliente = await Cliente.findOne({
+        const cita = await Cita.findOne({
             where: {
-                ID_Cliente: id,
+                ID_Cita: id,
             }
         })
         
-        if (cliente <= 0) return res.status(404).json({
-            message: 'Cliente no encontrado'
+        if (cita <= 0) return res.status(404).json({
+            message: 'Cita no encontrada'
         })
     
         res.status(200).json({
             ok: true,
             status: 200,
-            body: cliente
+            body: cita
         })
     } catch (error) {
         return res.status(500).json({
@@ -59,19 +60,20 @@ router.get("/Cliente/:ID_Cliente", async (req, res) => {
     }
 });
 
-router.post("/Cliente/POST", async (req, res) => {
-    const dataClientes = req.body
+router.post("/Cita/POST", async (req, res) => {
+    const dataCitas = req.body
     try {
-        await Cliente.sync({ alter: true})
-        const createCliente = await Cliente.create({
-            ID_Cliente: generarNumerosAleatoriosSinRepetir(),
-            TipoSangre: dataClientes.TipoSangre,
-            EnfermedadCrono: dataClientes.EnfermedadCrono
+        await Cita.sync({ alter: true})
+        const createCita = await Cita.create({
+            ID_Cita: generarNumerosAleatoriosSinRepetir(),
+            Correo: dataCitas.Correo,
+            Fecha_Cita: dataCitas.Fecha_Cita,
+            Hora_Cita: dataCitas.Hora_Cita
     })
     res.status(201).json({
         ok: true,
         status: 201,
-        message: "Cliente Creado",
+        message: "Cita Creada",
     });
     } catch (error) {
         return res.status(500).json({
@@ -80,27 +82,28 @@ router.post("/Cliente/POST", async (req, res) => {
     }
 });
 
-router.put("/Cliente/PUT/:ID_Cliente", async (req, res) => {
-    const id = req.params.ID_Cliente;
-    const dataClientes = req.body;
+router.put("/Cita/PUT/:ID_Cita", async (req, res) => {
+    const id = req.params.ID_Cita;
+    const dataCitas = req.body;
     try {
-        const updateCliente = await Cliente.update({
-            TipoSangre: dataClientes.TipoSangre,
-            EnfermedadCrono: dataClientes.EnfermedadCrono,
+        const updateCita = await Cita.update({
+            Correo: dataCitas.Correo,
+            Fecha_Cita: dataCitas.Fecha_Cita,
+            Hora_Cita: dataCitas.Hora_Cita
         }, {
             where: {
-                ID_Cliente: id,
+                ID_Cita: id,
             }
         })
     
-        if (updateCliente <= 0) return res.status(404).json({
-            message: 'Cliente no encontrado'
+        if (updateCita <= 0) return res.status(404).json({
+            message: 'Cita no encontrada'
         })
     
         res.status(200).json({
             ok: true,
             status: 200,
-            body: updateCliente
+            body: updateCita
         })
     } catch (error) {
         return res.status(500).json({
@@ -109,23 +112,23 @@ router.put("/Cliente/PUT/:ID_Cliente", async (req, res) => {
     }
 });
 
-router.delete("/Cliente/DEL/:ID_Cliente", async (req, res) => {
-    const id = req.params.ID_Cliente
+router.delete("/Cita/DEL/:ID_Cita", async (req, res) => {
+    const id = req.params.ID_Cita
     try {
-        const deleteCliente = await Cliente.destroy({
+        const deleteCita = await Cita.destroy({
             where: {
-                ID_Cliente: id,
+                ID_Cita: id,
             }
         })
     
-        if (deleteCliente <= 0) return res.status(404).json({
-            message: 'Cliente no encontrado'
+        if (deleteCita <= 0) return res.status(404).json({
+            message: 'Cita no encontrada'
         })
     
         res.status(204).json({
             ok: true,
             status: 204,
-            body: deleteCliente
+            body: deleteCita
         })
     } catch (error) {
         return res.status(500).json({
