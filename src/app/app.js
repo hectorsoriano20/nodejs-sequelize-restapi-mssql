@@ -1,8 +1,8 @@
 const express = require('express');
 const morgan = require("morgan");
 const cors = require('cors');
+const app = express();
 
-app.use(cors());
 
 const routerBancoSangre = require("../router/BancoSangre.router")
 const routerCliente = require("../router/Cliente.router")
@@ -17,8 +17,9 @@ const routerRolesEmpleado = require("../router/RolesEmpleado.router")
 const routerUbicaciones = require("../router/Ubicaciones.router")
 const routerCita = require("../router/Cita.router")
 
-const app = express();
 
+
+app.use(cors());
 app.use(morgan("dev"))
 
 app.get('/', (req, res) => {
