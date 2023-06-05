@@ -28,8 +28,9 @@ router.get("/Cita", async (req, res) => {
         body: citas
     })
     } catch (error) {
+        console.log(error)
         return res.status(500).json({
-            message: 'Ocurrio un error'
+            message: 'Ocurrio un error',
             
         })
     }

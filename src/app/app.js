@@ -18,7 +18,6 @@ const routerUbicaciones = require("../router/Ubicaciones.router")
 const routerCita = require("../router/Cita.router")
 
 
-
 app.use(cors());
 app.use(morgan("dev"))
 
