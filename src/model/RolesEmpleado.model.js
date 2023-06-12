@@ -29,6 +29,10 @@ RolesEmpleado.init({
         type: DataTypes.INTEGER,
         allowNull: true
     },
+    Correo_Empleado: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
 }, {
     sequelize,
     modelName: "RolesEmpleado"

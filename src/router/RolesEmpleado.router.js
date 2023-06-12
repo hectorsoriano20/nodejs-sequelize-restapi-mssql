@@ -66,7 +66,8 @@ router.post("/RolesEmpleado/POST", async (req, res) => {
         const createRolesEmpleado = await RolesEmpleado.create({
             ID_Roles: generarNumerosAleatoriosSinRepetir(),
             Nombre_Empleado: dataRolesEmpleados.Nombre_Empleado,
-            Contrasena_Empleado: dataRolesEmpleados.Contrasena_Empleado
+            Contrasena_Empleado: dataRolesEmpleados.Contrasena_Empleado,
+            Correo_Empleado: dataRolesEmpleados.Correo_Empleado
     })
     res.status(201).json({
         ok: true,
@@ -86,7 +87,8 @@ router.put("/RolesEmpleado/PUT/:ID_Roles", async (req, res) => {
     try {
         const updateRolesEmpleado = await RolesEmpleado.update({
             Nombre_Empleado: dataRolesEmpleados.Nombre_Empleado,
-            Contrasena_Empleado: dataRolesEmpleados.Contrasena_Empleado
+            Contrasena_Empleado: dataRolesEmpleados.Contrasena_Empleado,
+            Correo_Empleado: dataRolesEmpleados.Correo_Empleado
         }, {
             where: {
                 ID_Roles: id,
