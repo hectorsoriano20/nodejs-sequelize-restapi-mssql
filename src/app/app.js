@@ -16,7 +16,8 @@ const routerRegistro = require("../router/Registro.router")
 const routerRolesEmpleado = require("../router/RolesEmpleado.router")
 const routerUbicaciones = require("../router/Ubicaciones.router")
 const routerCita = require("../router/Cita.router")
-
+const routerEmail = require("../router/Email.router")
+const routerCompraSangre = require("../router/CompraSangre.router")
 
 app.use(cors());
 app.use(morgan("dev"))
@@ -37,6 +38,8 @@ app.use("/api/v1", routerRegistro)
 app.use("/api/v1", routerRolesEmpleado)
 app.use("/api/v1", routerUbicaciones)
 app.use("/api/v1", routerCita)
+app.use("/api/v1", routerEmail)
+app.use("/api/v1", routerCompraSangre)
 
 
 
