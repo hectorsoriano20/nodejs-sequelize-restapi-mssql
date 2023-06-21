@@ -67,7 +67,8 @@ router.post("/BancoSangre/POST", async (req, res) => {
         await BancoSangre.sync({ alter: true})
         const createBancoSangre = await BancoSangre.create({
             ID_BancoSangre: generarNumerosAleatoriosSinRepetir(),
-            Nombre_BancoSangre: dataBancoSangres.Nombre_BancoSangre
+            Nombre_BancoSangre: dataBancoSangres.Nombre_BancoSangre,
+            Ubicacion_BancoSangre: dataBancoSangres.Ubicacion_BancoSangre
             
     })
     res.status(201).json({
@@ -88,7 +89,8 @@ router.put("/BancoSangre/PUT/:ID_BancoSangre", async (req, res) => {
     const dataBancoSangres = req.body;
     try {
         const updateBancoSangre = await BancoSangre.update({
-            Nombre_BancoSangre: dataBancoSangres.Nombre_BancoSangre
+            Nombre_BancoSangre: dataBancoSangres.Nombre_BancoSangre,
+            Ubicacion_BancoSangre: dataBancoSangres.Ubicacion_BancoSangre
         }, {
             where: {
                 ID_BancoSangre: id,

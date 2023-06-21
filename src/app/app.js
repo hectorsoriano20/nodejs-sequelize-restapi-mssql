@@ -18,6 +18,7 @@ const routerUbicaciones = require("../router/Ubicaciones.router")
 const routerCita = require("../router/Cita.router")
 const routerEmail = require("../router/Email.router")
 const routerCompraSangre = require("../router/CompraSangre.router")
+const routerPinta = require("../router/Pinta.router")
 
 app.use(cors());
 app.use(morgan("dev"))
@@ -40,6 +41,7 @@ app.use("/api/v1", routerUbicaciones)
 app.use("/api/v1", routerCita)
 app.use("/api/v1", routerEmail)
 app.use("/api/v1", routerCompraSangre)
+app.use("/api/v1", routerPinta)
 
 
 

@@ -14,32 +14,33 @@ const sequelize = new Sequelize(dbDataBase, dbUser, dbPass, {
     port: dbPort,
 });
 
-class BancoSangre extends Model {}
+class Pinta extends Model {}
 
-BancoSangre.init({
-    ID_BancoSangre: {
+Pinta.init({
+    ID_Pinta: {
         type: DataTypes.INTEGER,
         primaryKey: true
     },
-    Nombre_BancoSangre: {
+    Nombre_Apellido_Pinta: {
         type: DataTypes.STRING,
         allowNull: true
     },
-    FK_Localidad_BancoSangre: {
-        type: DataTypes.INTEGER,
-        allowNull: true
-    },
-    FK_Provincias_BancoSangre: {
-        type: DataTypes.INTEGER,
-        allowNull: true
-    },
-    Ubicacion_BancoSangre: {
+    Correo_Pinta: {
         type: DataTypes.STRING,
+        allowNull: true
+    },
+    Tipo_Pinta: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    FechaDonacion_Pinta: {
+        type: DataTypes.DATE,
         allowNull: true
     },
 }, {
     sequelize,
-    modelName: "BancoSangre"
+    modelName: "Pinta"
 });
 
-module.exports = BancoSangre;
+module.exports = Pinta;
+
