@@ -53,6 +53,14 @@ Persona.init({
         type: DataTypes.STRING,
         allowNull: true
     },
+    Tipo_Sangre_Persona: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    Estado_Persona: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
 }, {
     sequelize,
     modelName: "Persona"

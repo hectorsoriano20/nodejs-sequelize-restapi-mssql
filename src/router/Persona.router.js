@@ -71,7 +71,9 @@ router.post("/Persona/POST", async (req, res) => {
             FechaNacimiento_Persona: dataPersonas.FechaNacimiento_Persona,
             Correo_Persona: dataPersonas.Correo_Persona,
             Numero_Persona: dataPersonas.Numero_Persona,
-            Contrasena_Persona: dataPersonas.Contrasena_Persona
+            Contrasena_Persona: dataPersonas.Contrasena_Persona,
+            Tipo_Sangre_Persona: dataPersonas.Tipo_Sangre_Persona,
+            Estado_Persona: dataPersonas.Estado_Persona,
     })
     res.status(201).json({
         ok: true,
@@ -96,7 +98,9 @@ router.put("/Persona/PUT/:ID_Persona", async (req, res) => {
             FechaNacimiento_Persona: dataPersonas.FechaNacimiento_Persona,
             Correo_Persona: dataPersonas.Correo_Persona,
             Numero_Persona: dataPersonas.Numero_Persona,
-            Contrasena_Persona: dataPersonas.Contrasena_Persona
+            Contrasena_Persona: dataPersonas.Contrasena_Persona,
+            Tipo_Sangre_Persona: dataPersonas.Tipo_Sangre_Persona,
+            Estado_Persona: dataPersonas.Estado_Persona,
         }, {
             where: {
                 ID_Persona: id,
