@@ -28,6 +28,7 @@ router.get("/Persona", async (req, res) => {
         body: personas
     })
     } catch (error) {
+        console.log(error)
         return res.status(500).json({
             message: 'Ocurrio un error'
         })
@@ -53,6 +54,32 @@ router.get("/Persona/:ID_Persona", async (req, res) => {
             body: persona
         })
     } catch (error) {
+        return res.status(500).json({
+            message: 'Ocurrio un error'
+        })
+    }
+});
+
+router.get("/Persona/Tipo/:Estado_Persona", async (req, res) => {
+    const pintas = req.params.Estado_Persona;
+    try {
+        const pinta = await Persona.findAll({
+            where: {
+                Estado_Persona: pintas,
+            }
+        })
+        
+        if (pinta <= 0) return res.status(404).json({
+            message: 'Pinta no encontrada'
+        })
+    
+        res.status(200).json({
+            ok: true,
+            status: 200,
+            body: pinta
+        })
+    } catch (error) {
+        console.log(error)
         return res.status(500).json({
             message: 'Ocurrio un error'
         })
