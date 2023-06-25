@@ -1,14 +1,18 @@
 const router = require("express").Router();
 var nodemailer = require("nodemailer");
-var express = require("express");
-var app = express();
+var cors = require('cors');
 
-router.post("/send-email", (req, res) => {
-    
+// Define las opciones de cors aquí
+var corsOptions = {
+    origin: '*',  // reemplaza esto con el origen que deseas permitir
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+router.post("/send-email", cors(corsOptions), (req, res) => {
     const dataEmail = req.body;
-    Email_Formulario = dataEmail.Email_Formulario;
-    Nombre_Persona = dataEmail.Nombre_Persona;
-    Apellido_Persona = dataEmail.Apellido_Persona;
+    const Email_Formulario = dataEmail.Email_Formulario;
+    const Nombre_Persona = dataEmail.Nombre_Persona;
+    const Apellido_Persona = dataEmail.Apellido_Persona;
     
     var transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -29,7 +33,7 @@ router.post("/send-email", (req, res) => {
 
     transporter.sendMail(mailOptions, (error, info) => {
         if(error) {
-            console.log('Error sending mail: ', error); // Line added for debugging
+            console.log('Error sending mail: ', error);
             res.status(500).send(error.message);
         } else {
             console.log("Email enviado.");
@@ -38,11 +42,10 @@ router.post("/send-email", (req, res) => {
     });
 });
 
-router.post("/send-compra-email", (req, res) => {
-    
+router.post("/send-compra-email", cors(corsOptions), (req, res) => {
     const dataEmail = req.body;
-    Correo_Compra = dataEmail.Correo_Compra;
-    Nombre_Comprador = dataEmail.Nombre_Comprador;
+    const Correo_Compra = dataEmail.Correo_Compra;
+    const Nombre_Comprador = dataEmail.Nombre_Comprador;
     
     var transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
@@ -63,7 +66,7 @@ router.post("/send-compra-email", (req, res) => {
 
     transporter.sendMail(mailOptions, (error, info) => {
         if(error) {
-            console.log('Error sending mail: ', error); // Line added for debugging
+            console.log('Error sending mail: ', error);
             res.status(500).send(error.message);
         } else {
             console.log("Email enviado.");
