@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { faker } = require("@faker-js/faker")
 
 const BancoSangre = require("../model/BancoSangre.model")
+const BancoYPinta = require("../model/BancoYPinta.model")
 
 function generarNumerosAleatoriosSinRepetir(cantidad = 1, minimo = 1, maximo = 100) {
     var numeros = [];
@@ -41,6 +42,32 @@ router.get("/BancoSangre/:ID_BancoSangre", async (req, res) => {
         const bancosangre = await BancoSangre.findOne({
             where: {
                 ID_BancoSangre: id,
+            }
+        })
+        
+        if (bancosangre <= 0) return res.status(404).json({
+            message: 'Banco de Sangre no encontrado'
+        })
+    
+        res.status(200).json({
+            ok: true,
+            status: 200,
+            body: bancosangre
+        })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            message: 'Ocurrio un error'
+        })
+    }
+});
+
+router.get("/BancoSangre/Nombre/:Nombre_BancoSangre", async (req, res) => {
+    const id = req.params.Nombre_BancoSangre;
+    try {
+        const bancosangre = await BancoYPinta.findAll({
+            where: {
+                Nombre_BancoSangre: id,
             }
         })
         
