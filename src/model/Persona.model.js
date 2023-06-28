@@ -61,6 +61,10 @@ Persona.init({
         type: DataTypes.STRING,
         allowNull: true
     },
+    Cedula_Persona: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
 }, {
     sequelize,
     modelName: "Persona"

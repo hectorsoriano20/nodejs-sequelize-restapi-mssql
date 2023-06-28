@@ -86,6 +86,32 @@ router.get("/Persona/Tipo/:Estado_Persona", async (req, res) => {
     }
 });
 
+router.get("/Persona/Cedula/:Cedula_Persona", async (req, res) => {
+    const cedulas = req.params.Cedula_Persona;
+    try {
+        const cedula = await Persona.findAll({
+            where: {
+                Cedula_Persona: cedulas,
+            }
+        })
+        
+        if (cedula <= 0) return res.status(404).json({
+            message: 'Cedula no encontrada'
+        })
+    
+        res.status(200).json({
+            ok: true,
+            status: 200,
+            body: cedula
+        })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            message: 'Ocurrio un error'
+        })
+    }
+});
+
 router.post("/Persona/POST", async (req, res) => {
     const dataPersonas = req.body
     try {
@@ -101,6 +127,7 @@ router.post("/Persona/POST", async (req, res) => {
             Contrasena_Persona: dataPersonas.Contrasena_Persona,
             Tipo_Sangre_Persona: dataPersonas.Tipo_Sangre_Persona,
             Estado_Persona: dataPersonas.Estado_Persona,
+            Cedula_Persona: dataPersonas.Cedula_Persona
     })
     res.status(201).json({
         ok: true,
@@ -128,6 +155,7 @@ router.put("/Persona/PUT/:ID_Persona", async (req, res) => {
             Contrasena_Persona: dataPersonas.Contrasena_Persona,
             Tipo_Sangre_Persona: dataPersonas.Tipo_Sangre_Persona,
             Estado_Persona: dataPersonas.Estado_Persona,
+            Cedula_Persona: dataPersonas.Cedula_Persona
         }, {
             where: {
                 ID_Persona: id,
