@@ -132,8 +132,11 @@ router.post("/Pinta/POST", async (req, res) => {
         await BancoYPinta.create({
             ID_BancoYPinta: idGenerado, // Usamos el mismo ID generado
             Nombre_BancoSangre: dataPintas.Nombre_BancoSangre,
+            Nombre_Apellido_Pinta: dataPintas.Nombre_Apellido_Pinta,
             Tipo_Pinta: dataPintas.Tipo_Pinta,
-            Estado_Pinta: dataPintas.Estado_Pinta
+            FechaDonacion_Pinta: dataPintas.FechaDonacion_Pinta,
+            Estado_Pinta: dataPintas.Estado_Pinta,
+            
         });
 
         res.status(201).json({

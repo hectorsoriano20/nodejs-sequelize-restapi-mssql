@@ -25,7 +25,15 @@ BancoYPinta.init({
         type: DataTypes.STRING,
         allowNull: true
     },
+    Nombre_Apellido_Pinta: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
     Tipo_Pinta: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    FechaDonacion_Pinta: {
         type: DataTypes.STRING,
         allowNull: true
     },
