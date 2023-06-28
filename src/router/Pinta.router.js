@@ -208,9 +208,24 @@ router.delete("/Pinta/DEL/:ID_Pinta", async (req, res) => {
                 ID_Pinta: id,
             }
         })
+        
+        // Añade esta sección para borrar de la tabla BancoYPinta también
+        const deleteBancoYPinta = await BancoYPinta.destroy({
+            where: {
+                ID_BancoYPinta: id,
+            }
+        })
     
+        if (deletePinta <= 0 && deleteBancoYPinta <= 0) return res.status(404).json({
+            message: 'Pinta no encontrada en ninguna de las tablas'
+        })
+
         if (deletePinta <= 0) return res.status(404).json({
-            message: 'Pinta no encontrada'
+            message: 'Pinta no encontrada en la tabla Pinta'
+        })
+
+        if (deleteBancoYPinta <= 0) return res.status(404).json({
+            message: 'Pinta no encontrada en la tabla BancoYPinta'
         })
     
         res.status(204).json({
@@ -224,5 +239,6 @@ router.delete("/Pinta/DEL/:ID_Pinta", async (req, res) => {
         })
     }
 });
+
 
 module.exports = router;
