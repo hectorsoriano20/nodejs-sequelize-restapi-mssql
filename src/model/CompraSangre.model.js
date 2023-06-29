@@ -21,6 +21,10 @@ CompraSangre.init({
         type: DataTypes.INTEGER,
         primaryKey: true
     },
+    Cedula_Comprador: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
     Nombre_Comprador: {
         type: DataTypes.STRING,
         allowNull: true
@@ -37,6 +41,10 @@ CompraSangre.init({
         type: DataTypes.STRING,
         allowNull: true
     },
+    Cedula_Donante: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
     Nombre_Donante: {
         type: DataTypes.STRING,
         allowNull: true
@@ -48,7 +56,11 @@ CompraSangre.init({
     Edad_Donante: {
         type: DataTypes.STRING,
         allowNull: true
-    }
+    },
+    Estatus_Compra: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
 }, {
     sequelize,
     modelName: "CompraSangre"

@@ -61,13 +61,16 @@ router.post("/CompraSangre/POST", async (req, res) => {
         await CompraSangre.sync({ alter: true})
         const createCompraSangre = await CompraSangre.create({
             ID_CompraSangre: generarNumerosAleatoriosSinRepetir(),
+            Cedula_Comprador: dataCompraSangres.Cedula_Comprador,
             Nombre_Comprador: dataCompraSangres.Nombre_Comprador,
             Correo_Compra: dataCompraSangres.Correo_Compra,
             Telefono_Compra: dataCompraSangres.Telefono_Compra,
             Grupo_Sanguineo_Compra: dataCompraSangres.Grupo_Sanguineo_Compra,
+            Cedula_Donante: dataCompraSangres.Cedula_Donante,
             Nombre_Donante: dataCompraSangres.Nombre_Donante,
             Grupo_Sanguineo_Donante: dataCompraSangres.Grupo_Sanguineo_Donante,
-            Edad_Donante: dataCompraSangres.Edad_Donante
+            Edad_Donante: dataCompraSangres.Edad_Donante,
+            Estatus_Compra: dataCompraSangres.Estatus_Compra,
     })
     res.status(201).json({
         ok: true,
@@ -84,13 +87,16 @@ router.put("/CompraSangre/PUT/:ID_CompraSangre", async (req, res) => {
     const dataCompraSangres = req.body;
     try {
         const updateCompraSangre = await CompraSangre.update({
+            Cedula_Comprador: dataCompraSangres.Cedula_Comprador,
             Nombre_Comprador: dataCompraSangres.Nombre_Comprador,
             Correo_Compra: dataCompraSangres.Correo_Compra,
             Telefono_Compra: dataCompraSangres.Telefono_Compra,
             Grupo_Sanguineo_Compra: dataCompraSangres.Grupo_Sanguineo_Compra,
+            Cedula_Donante: dataCompraSangres.Cedula_Donante,
             Nombre_Donante: dataCompraSangres.Nombre_Donante,
             Grupo_Sanguineo_Donante: dataCompraSangres.Grupo_Sanguineo_Donante,
-            Edad_Donante: dataCompraSangres.Edad_Donante
+            Edad_Donante: dataCompraSangres.Edad_Donante,
+            Estatus_Compra: dataCompraSangres.Estatus_Compra,
         }, {
             where: {
                 ID_CompraSangre: id,

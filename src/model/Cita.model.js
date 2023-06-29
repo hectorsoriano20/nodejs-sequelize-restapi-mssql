@@ -21,7 +21,19 @@ Cita.init({
         type: DataTypes.INTEGER,
         primaryKey: true
     },
+    Cedula_Cita: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    Nombre_Cita: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
     Correo: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    Tipo_Sangre_Cita: {
         type: DataTypes.STRING,
         allowNull: true
     },
@@ -32,7 +44,11 @@ Cita.init({
     Hora_Cita: {
         type: DataTypes.TIME,
         allowNull: true
-    }
+    },
+    Estado_Cita: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
 }, {
     sequelize,
     modelName: "Cita"

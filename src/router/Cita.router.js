@@ -67,9 +67,13 @@ router.post("/Cita/POST", async (req, res) => {
         await Cita.sync({ alter: true})
         const createCita = await Cita.create({
             ID_Cita: generarNumerosAleatoriosSinRepetir(),
+            Cedula_Cita: dataCitas.Cedula_Cita,
+            Nombre_Cita: dataCitas.Nombre_Cita,
             Correo: dataCitas.Correo,
+            Tipo_Sangre_Cita: dataCitas.Tipo_Sangre_Cita,
             Fecha_Cita: dataCitas.Fecha_Cita,
-            Hora_Cita: dataCitas.Hora_Cita
+            Hora_Cita: dataCitas.Hora_Cita,
+            Estado_Cita: dataCitas.Estado_Cita,
     })
     res.status(201).json({
         ok: true,
@@ -88,9 +92,13 @@ router.put("/Cita/PUT/:ID_Cita", async (req, res) => {
     const dataCitas = req.body;
     try {
         const updateCita = await Cita.update({
+            Cedula_Cita: dataCitas.Cedula_Cita,
+            Nombre_Cita: dataCitas.Nombre_Cita,
             Correo: dataCitas.Correo,
+            Tipo_Sangre_Cita: dataCitas.Fecha_Cita,
             Fecha_Cita: dataCitas.Fecha_Cita,
-            Hora_Cita: dataCitas.Hora_Cita
+            Hora_Cita: dataCitas.Hora_Cita,
+            Estado_Cita: dataCitas.Estado_Cita,
         }, {
             where: {
                 ID_Cita: id,
