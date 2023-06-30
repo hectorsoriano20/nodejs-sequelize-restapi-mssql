@@ -42,6 +42,39 @@ router.post("/send-email", cors(corsOptions), (req, res) => {
     });
 });
 
+router.post("/send-cita-email", cors(corsOptions), (req, res) => {
+    const dataEmail = req.body;
+    const Correo = dataEmail.Correo;
+    const Nombre_Cita = dataEmail.Nombre_Cita;
+    
+    var transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
+        auth: {
+            user: "cuentacuatro1379@gmail.com",
+            pass: "fzrkylhbloueminp",
+        },
+    });
+
+    var mailOptions = {
+        from: "Remitente",
+        to: Correo,
+        subject: "Notificación de Creación de Solicitud de Donación de Pinta de Sangre",
+        text: "Estimado/a " + Nombre_Cita + ", le informamos que hemos recibido correctamente su solicitud de donación, estaremos revisando su solicitud y nos pondremos en contacto con usted."
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if(error) {
+            console.log('Error sending mail: ', error);
+            res.status(500).send(error.message);
+        } else {
+            console.log("Email enviado.");
+            res.status(200).jsonp("Email Sent");
+        }
+    });
+});
+
 router.post("/send-compra-email", cors(corsOptions), (req, res) => {
     const dataEmail = req.body;
     const Correo_Compra = dataEmail.Correo_Compra;
