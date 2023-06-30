@@ -95,7 +95,7 @@ router.put("/Cita/PUT/:ID_Cita", async (req, res) => {
             Cedula_Cita: dataCitas.Cedula_Cita,
             Nombre_Cita: dataCitas.Nombre_Cita,
             Correo: dataCitas.Correo,
-            Tipo_Sangre_Cita: dataCitas.Fecha_Cita,
+            Tipo_Sangre_Cita: dataCitas.Tipo_Sangre_Cita,
             Fecha_Cita: dataCitas.Fecha_Cita,
             Hora_Cita: dataCitas.Hora_Cita,
             Estado_Cita: dataCitas.Estado_Cita,
