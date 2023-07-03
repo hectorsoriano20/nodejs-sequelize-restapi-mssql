@@ -37,6 +37,14 @@ BancoSangre.init({
         type: DataTypes.STRING,
         allowNull: true
     },
+    Latitud_BancoSangre: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    Longitud_BancoSangre: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
 }, {
     sequelize,
     modelName: "BancoSangre"
