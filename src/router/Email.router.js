@@ -24,23 +24,40 @@ router.post("/send-email", cors(corsOptions), (req, res) => {
         },
     });
 
-    var mailOptions = {
+    var mailOptions1 = {
         from: "Remitente",
         to: Email_Formulario,
         subject: "Notificación de Creación de Usuario",
-        text: "Estimado/a " + Nombre_Persona + " " + Apellido_Persona + ", le informamos que su cuenta ha sido creada correctamente."
+        text: "Estimado/a " + Nombre_Persona + " " + Apellido_Persona + ",\n\nLe informamos que su cuenta ha sido creada correctamente. Puede proceder a Iniciar Sesión en nuestra Web y utilizar nuestros servicios"
+
     };
 
-    transporter.sendMail(mailOptions, (error, info) => {
+    var mailOptions2 = {
+        from: "Remitente",
+        to: "hectorricardo.car@gmail.com",
+        subject: "Notificación de Creación de Usuario",
+        text: "Un nuevo usuario se ha registrado en la plataforma. Favor revisar los datos de registro y corroborar la información."
+    };
+
+    transporter.sendMail(mailOptions1, (error, info) => {
         if(error) {
             console.log('Error sending mail: ', error);
             res.status(500).send(error.message);
         } else {
-            console.log("Email enviado.");
-            res.status(200).jsonp("Email Sent");
+            console.log("Primer correo enviado.");
+            transporter.sendMail(mailOptions2, (error2, info2) => {
+                if (error2) {
+                    console.log('Error sending second mail: ', error2);
+                    res.status(500).send(error2.message);
+                } else {
+                    console.log("Segundo correo enviado.");
+                    res.status(200).jsonp("Emails Sent");
+                }
+            });
         }
     });
 });
+
 
 router.post("/send-cita-email", cors(corsOptions), (req, res) => {
     const dataEmail = req.body;
@@ -57,23 +74,40 @@ router.post("/send-cita-email", cors(corsOptions), (req, res) => {
         },
     });
 
-    var mailOptions = {
+    var mailOptions1 = {
         from: "Remitente",
         to: Correo,
         subject: "Notificación de Creación de Solicitud de Donación de Pinta de Sangre",
-        text: "Estimado/a " + Nombre_Cita + ", le informamos que hemos recibido correctamente su solicitud de donación, estaremos revisando su solicitud y nos pondremos en contacto con usted."
+        text: "Estimado/a " + Nombre_Cita + ",\n\nLe informamos que hemos recibido correctamente su solicitud de donación, estaremos revisando los datos y nos pondremos en contacto con usted."
     };
 
-    transporter.sendMail(mailOptions, (error, info) => {
+    var mailOptions2 = {
+        from: "Remitente",
+        to: "hectorricardo.car@gmail.com", 
+        subject: "Notificación de Creación de Solicitud de Donación de Pinta de Sangre", 
+        text: "Se ha registrado una nueva solicitud de Donación de Pinta de Sangre. Favor revisar los detalles de la misma y actualizar el estado."
+    };
+
+    transporter.sendMail(mailOptions1, (error, info) => {
         if(error) {
             console.log('Error sending mail: ', error);
             res.status(500).send(error.message);
         } else {
-            console.log("Email enviado.");
-            res.status(200).jsonp("Email Sent");
+            console.log("Primer correo enviado.");
+        }
+    });
+
+    transporter.sendMail(mailOptions2, (error, info) => {
+        if(error) {
+            console.log('Error sending mail: ', error);
+            res.status(500).send(error.message);
+        } else {
+            console.log("Segundo correo enviado.");
+            res.status(200).jsonp("Ambos correos enviados");
         }
     });
 });
+
 
 router.post("/send-compra-email", cors(corsOptions), (req, res) => {
     const dataEmail = req.body;
@@ -90,22 +124,89 @@ router.post("/send-compra-email", cors(corsOptions), (req, res) => {
         },
     });
 
-    var mailOptions = {
+    var mailOptions1 = {
         from: "Remitente",
         to: Correo_Compra,
         subject: "Notificación de Creación de Solicitud de Compra de Pinta de Sangre",
-        text: "Estimado/a " + Nombre_Comprador + ", le informamos que hemos recibido correctamente su formulario de compra, estaremos revisando su solicitud y nos pondremos en contacto con usted."
+        text: "Estimado/a " + Nombre_Comprador + ",\n\nLe informamos que hemos recibido correctamente su formulario de compra, estaremos revisando su solicitud y nos pondremos en contacto con usted."
     };
 
-    transporter.sendMail(mailOptions, (error, info) => {
+    var mailOptions2 = {
+        from: "Remitente",
+        to: "hectorricardo.car@gmail.com",
+        subject: "Notificación de Creación de Solicitud de Compra de Pinta de Sangre",
+        text: "Se ha registrado una nueva solicitud de Compra de Pinta de Sangre. Favor revisar los detalles de la misma y actualizar el estado."
+    };
+
+    transporter.sendMail(mailOptions1, (error, info) => {
         if(error) {
             console.log('Error sending mail: ', error);
             res.status(500).send(error.message);
         } else {
-            console.log("Email enviado.");
-            res.status(200).jsonp("Email Sent");
+            console.log("Primer correo enviado.");
+        }
+    });
+
+    transporter.sendMail(mailOptions2, (error, info) => {
+        if(error) {
+            console.log('Error sending mail: ', error);
+            res.status(500).send(error.message);
+        } else {
+            console.log("Segundo correo enviado.");
+            res.status(200).jsonp("Ambos correos enviados");
+        }
+    });
+});
+
+router.post("/send-contacto-email", cors(corsOptions), (req, res) => {
+    const dataEmail = req.body;
+    const Email_Formulario = dataEmail.Email_Formulario;
+    const Nombre_Persona = dataEmail.Nombre_Persona;
+    const Asunto_Formulario = dataEmail.Asunto_Formulario;
+    const Mensaje_Formulario = dataEmail.Mensaje_Formulario;
+    
+    var transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
+        auth: {
+            user: "cuentacuatro1379@gmail.com",
+            pass: "fzrkylhbloueminp",
+        },
+    });
+
+    var mailOptions1 = {
+        from: "Remitente",
+        to: Email_Formulario,
+        subject: "Confirmación de envío de mensaje",
+        text: `Estimado/a ${Nombre_Persona},\n\nLe informamos que hemos recibido su mensaje. Estaremos revisando y le daremos respuesta en los próximos días.`
+    };
+
+    var mailOptions2 = {
+        from: "Remitente",
+        to: "hectorricardo.car@gmail.com",
+        subject: Asunto_Formulario,
+        text: `${Nombre_Persona} ha enviado el siguiente mensaje:\n\n${Mensaje_Formulario}`
+    };
+
+    transporter.sendMail(mailOptions1, (error, info) => {
+        if(error) {
+            console.log('Error sending mail: ', error);
+            res.status(500).send(error.message);
+        } else {
+            console.log("Primer correo enviado.");
+            transporter.sendMail(mailOptions2, (error2, info2) => {
+                if (error2) {
+                    console.log('Error sending second mail: ', error2);
+                    res.status(500).send(error2.message);
+                } else {
+                    console.log("Segundo correo enviado.");
+                    res.status(200).jsonp("Emails Sent");
+                }
+            });
         }
     });
 });
 
 module.exports = router;
+
