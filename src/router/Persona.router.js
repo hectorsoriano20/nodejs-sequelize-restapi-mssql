@@ -60,7 +60,7 @@ router.get("/Persona/:ID_Persona", async (req, res) => {
     }
 });
 
-router.get("/Persona/:User_ID_Persona", async (req, res) => {
+router.get("/Persona/User/:User_ID_Persona", async (req, res) => {
     const id = req.params.User_ID_Persona;
     try {
         const persona = await Persona.findOne({
