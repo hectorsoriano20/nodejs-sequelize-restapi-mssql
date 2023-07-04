@@ -28,7 +28,7 @@ router.post("/send-email", cors(corsOptions), (req, res) => {
         from: "Remitente",
         to: Email_Formulario,
         subject: "Notificación de Creación de Usuario",
-        text: "Estimado/a " + Nombre_Persona + " " + Apellido_Persona + ",\n\nLe informamos que su cuenta ha sido creada correctamente. Puede proceder a Iniciar Sesión en nuestra Web y utilizar nuestros servicios"
+        text: "Estimado/a " + Nombre_Persona + " " + Apellido_Persona + ",\n\nLe informamos que sus datos han sido actualizados correctamente. Puede proceder a Iniciar Sesión en nuestra Web y utilizar nuestros servicios"
 
     };
 
@@ -178,7 +178,7 @@ router.post("/send-contacto-email", cors(corsOptions), (req, res) => {
     var mailOptions1 = {
         from: "Remitente",
         to: Email_Formulario,
-        subject: "Confirmación de envío de mensaje",
+        subject: "Confirmación de envío de mensaje: " + Asunto_Formulario,
         text: `Estimado/a ${Nombre_Persona},\n\nLe informamos que hemos recibido su mensaje. Estaremos revisando y le daremos respuesta en los próximos días.`
     };
 

@@ -60,6 +60,31 @@ router.get("/Persona/:ID_Persona", async (req, res) => {
     }
 });
 
+router.get("/Persona/:User_ID_Persona", async (req, res) => {
+    const id = req.params.User_ID_Persona;
+    try {
+        const persona = await Persona.findOne({
+            where: {
+                User_ID_Persona: id,
+            }
+        })
+        
+        if (persona <= 0) return res.status(404).json({
+            message: 'Persona no encontrada'
+        })
+    
+        res.status(200).json({
+            ok: true,
+            status: 200,
+            body: persona
+        })
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Ocurrio un error'
+        })
+    }
+});
+
 router.get("/Persona/Tipo/:Estado_Persona", async (req, res) => {
     const pintas = req.params.Estado_Persona;
     try {
@@ -124,10 +149,10 @@ router.post("/Persona/POST", async (req, res) => {
             FechaNacimiento_Persona: dataPersonas.FechaNacimiento_Persona,
             Correo_Persona: dataPersonas.Correo_Persona,
             Numero_Persona: dataPersonas.Numero_Persona,
-            Contrasena_Persona: dataPersonas.Contrasena_Persona,
             Tipo_Sangre_Persona: dataPersonas.Tipo_Sangre_Persona,
             Estado_Persona: dataPersonas.Estado_Persona,
-            Cedula_Persona: dataPersonas.Cedula_Persona
+            Cedula_Persona: dataPersonas.Cedula_Persona,
+            User_ID_Persona: dataPersonas.User_ID_Persona,
     })
     res.status(201).json({
         ok: true,
@@ -152,7 +177,6 @@ router.put("/Persona/PUT/:ID_Persona", async (req, res) => {
             FechaNacimiento_Persona: dataPersonas.FechaNacimiento_Persona,
             Correo_Persona: dataPersonas.Correo_Persona,
             Numero_Persona: dataPersonas.Numero_Persona,
-            Contrasena_Persona: dataPersonas.Contrasena_Persona,
             Tipo_Sangre_Persona: dataPersonas.Tipo_Sangre_Persona,
             Estado_Persona: dataPersonas.Estado_Persona,
             Cedula_Persona: dataPersonas.Cedula_Persona

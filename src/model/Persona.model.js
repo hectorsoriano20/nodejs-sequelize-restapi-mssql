@@ -49,10 +49,6 @@ Persona.init({
         type: DataTypes.INTEGER,
         allowNull: true
     },
-    Contrasena_Persona: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
     Tipo_Sangre_Persona: {
         type: DataTypes.STRING,
         allowNull: true
@@ -62,6 +58,10 @@ Persona.init({
         allowNull: true
     },
     Cedula_Persona: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    User_ID_Persona: {
         type: DataTypes.STRING,
         allowNull: true
     },
